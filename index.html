@@ -117,22 +117,26 @@ const CalculadoraDePrazo = () => {
   const feriadosMap = {
     '2025-01-01': 'Confraternização Universal',
     '2025-01-31': 'Instabilidade Projudi',
-    '2025-03-03': 'Véspera de Carnaval',
     '2025-03-04': 'Carnaval',
-    '2025-04-17': 'Quinta-feira Santa',
     '2025-04-18': 'Paixão de Cristo',
     '2025-04-21': 'Tiradentes',
     '2025-05-01': 'Dia do Trabalho',
-    '2025-06-19': 'Corpus Christi',
-    '2025-06-20': 'Feriado CNJ',
-    '2025-09-08': 'Padroeira de Curitiba',
     '2025-10-28': 'Dia do Funcionário Público',
     '2025-11-20': 'Consciência Negra',
     '2025-12-08': 'Dia da Justiça',
-    '2025-12-19': 'Emancipação do Paraná',
   };
   const decretosMap = {
+      '2025-03-03': 'Véspera de Carnaval',
+      '2025-04-17': 'Quinta-feira Santa',
       '2025-05-02': 'Decreto P-SEP',
+      '2025-06-19': 'Corpus Christi',
+      '2025-06-20': 'Feriado CNJ',
+      '2025-09-08': 'Padroeira de Curitiba',
+      '2025-10-27': 'Decreto nº127/2025',
+      '2025-11-21': 'Decreto Suspensão de expediente nº127/2025',
+      '2025-12-19': 'Decreto',
+      '2025-12-24': 'Decreto',
+      '2025-12-31': 'Decreto',
   };
 
   const getMotivoDiaNaoUtil = (date, considerarDecretos) => {
@@ -144,7 +148,7 @@ const CalculadoraDePrazo = () => {
     const month = date.getMonth() + 1;
     const day = date.getDate();
 
-    if ((month === 1 && day >= 2 && day <= 20) || (month === 12 && day >= 20 && day <= 31)) {
+    if ((month === 1 && day >= 2 && day <= 20) || (month === 12 && day >= 20 && day <= 30)) { // Ajustado para não incluir 31, que já é decreto
         return 'Recesso Forense';
     }
     return null;
@@ -220,7 +224,7 @@ const CalculadoraDePrazo = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
           <div>
-            <label className="block text-sm font-medium text-slate-600 dark:text-slate-300 mb-2">Tipo de Prazo</label>
+            <label className="block text-sm font-medium text-slate-600 dark:text-slate-300 mb-2">Matéria</label>
             <div className="flex rounded-lg shadow-sm">
               <button onClick={() => setTipoPrazo('civel')} className={`w-full px-4 py-2 text-sm font-medium transition-colors duration-200 rounded-l-lg ${tipoPrazo === 'civel' ? 'bg-indigo-600 text-white' : 'bg-white/50 dark:bg-slate-900/50 hover:bg-slate-200 dark:hover:bg-slate-700'}`}>Cível (Dias Úteis)</button>
               <button onClick={() => setTipoPrazo('crime')} className={`w-full px-4 py-2 text-sm font-medium transition-colors duration-200 rounded-r-lg border-l border-slate-300 dark:border-slate-600 ${tipoPrazo === 'crime' ? 'bg-indigo-600 text-white' : 'bg-white/50 dark:bg-slate-900/50 hover:bg-slate-200 dark:hover:bg-slate-700'}`}>Crime (Dias Corridos)</button>
@@ -302,7 +306,7 @@ const CalculadoraDePrazo = () => {
 
 
 
-const Header = () => (<header className="bg-white/30 dark:bg-slate-900/30 backdrop-blur-xl shadow-sm sticky top-0 z-10 border-b border-slate-200/50 dark:border-slate-700/50"><div className="container mx-auto px-4 py-4"><div className="flex items-center gap-4"><svg className="h-9 w-9 text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" /></svg><h1 className="text-xl sm:text-2xl font-bold text-slate-800 dark:text-slate-100 tracking-tight">Calculadora de Prazos TJPR</h1></div></div></header>);
+const Header = () => (<header className="bg-white/30 dark:bg-slate-900/30 backdrop-blur-xl shadow-sm sticky top-0 z-10 border-b border-slate-200/50 dark:border-slate-700/50"><div className="container mx-auto px-4 py-4"><div className="flex items-center gap-4"><svg className="h-9 w-9 text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18-3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" /></svg><h1 className="text-xl sm:text-2xl font-bold text-slate-800 dark:text-slate-100 tracking-tight">Calculadora de Prazos TJPR</h1></div></div></header>);
 
 
 // --- Componente Principal ---
